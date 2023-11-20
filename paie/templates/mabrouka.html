@@ -1,0 +1,488 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+{% load i18n %}
+
+
+
+
+<div class="container-fluid">
+  <div class="title">{{title}}</div>
+    <div class="row">
+   
+      <nav class="navbar navbar-expand-md navbar-danger  bg-primary me-2">
+  
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2">
+              <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'home' %}"><img src="{% static 'img/home.png' %} "> ACCEUIL</a>
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'tous_domaines_hailali' %}" class="HnGhMJ  btn btn-warning mt-2 text-center" style=" color:rgb(255, 255, 255);" role="button">Tous les domaines</a>
+              </li>
+              
+              
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_436' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Domaine 436</a>
+              </li>
+              <li class="nav-item me-2 mt-3">      
+                
+                  <a href="{% url 'mouvement-des-caisses-cuillette_4660' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Domaine 4660</a>
+                </li>
+                <li class="nav-item me-2 mt-3"> 
+              <a href="{% url 'mouvement-des-caisses-cuillette_3434' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 3434</a>
+                   
+              </li>
+              
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2453' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2453</a>
+                   
+              </li>
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2200' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2200</a>
+              </li>
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2805' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2805</a>
+              </li>
+              
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_1286' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 1286</a>
+  
+    
+      
+      
+              </li>
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_774' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 774</a>
+              </li>
+              
+     
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2463' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2463</a>
+              </li>
+              <li class="nav-item me-2 mt-3">
+                <a href="{% url 'mouvement-des-caisses-cuillette_1574' %}" class="avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 1574</a>
+              </li>
+               
+            </ul>
+            
+          
+           
+              
+              
+                    
+            
+          </div>
+        </div>
+      </nav>
+      </div>
+
+  
+  
+  
+
+
+
+
+   <center>  
+  <a href="https://private.mbrouka.com/Reports/browse/Platform%20Reporting%20Mbrouka"target="_blank" rel="noopener" class="btn btn-danger mt-5" role="button" style="text-align: center;"><strong>Visiter le site Mabrouka</strong></a>
+  <center>     
+{% if movs %}
+<div class=" text-center">
+  <hr class="mt-2" style="color: rgb(25, 0, 255);">
+  {% if header == "Domaine Ouled Berhil 436" %}
+  <h2 class="" style="color: rgb(34, 190, 211);">Domaine Ouled Berhil 436</h2>
+  <a href="{% url 'export_436' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Ouled Berhil 436</h2>
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+    
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2> 
+  <h2 class=" Prt9 ">{{reste}}</h2>
+ <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement436" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Ouled Drisse 4660" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="{% url 'export_4660' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Ouled Drisse 4660</h2>
+    
+  
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement4660" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 1286" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="#" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(14, 4, 70);">Domaine : Aoulouz 1286</h2>
+ 
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement1286" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 774" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="#" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine : Aoulouz 774</h2>
+   
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   </h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement774" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 1574" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="#" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Aoulouz 1574</h2>
+  
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement1574" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 2463" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="#" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Aoulouz 2463</h2>
+  
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement2463" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+
+  
+  {% elif header == "Domaine Zbirate 2453" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="{% url 'export_2453' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine : Zbirate 2453</h2>
+  
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement2453" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Mariem 3434" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="{% url 'export_3434' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Mariem 3434</h2>
+    
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement3434" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Plambier 2200" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="{% url 'export_2200' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Plambier 2200</h2>
+ 
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement2200" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Zbirate 2805" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="#" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+  <div class="card" style="background: rgb(230, 224, 224); width: 290px;position: fixed;" >
+    <h2 class="" style="color: rgb(0, 0, 0);">Domaine Zbirate 2805</h2>
+    
+    <h2 class="Prt9">NBR de caisses reçues  : {{ entré.NBR_caisses_Entrée__sum }} </h2> 
+  <h2 class="Prt9">NBR de caisses envoyées  :  {{sortie.NBR_caisses_Sortie__sum}}</h2>
+  <h2 class=" Prt9 ">{{reste}}</h2>
+  <hr>
+   {% for group in result %}
+  <h2 class=" Prt9 ">{{ group }}   KG</h2>
+   {% endfor %}
+  <h2 class="Prt9o">Tonnage total   :  {{ poids.Poids__sum }}  KG</h2>
+</div>
+<a href="/ajouter-mouvement2805" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% endif %}
+</div>
+
+
+
+{% else %}
+<div class=" text-center">
+  <hr class="mt-2" style="color: rgb(25, 0, 255);">
+  {% if header == "Domaine Ouled Berhil 436" %}
+  <h2 class="" style="color: rgb(34, 190, 211);">{{header}}</h2>
+  <a href="/ajouter-mouvement436" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  
+  {% elif header == "Domaine Ouled Drisse 4660" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Ouled Drisse 4660</h2>
+  <a href="/ajouter-mouvement4660" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  
+ 
+  {% elif header == "Domaine Aoulouz 1286" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine : Aoulouz 1286</h2>
+  <a href="/ajouter-mouvement1286" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 774" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Aoulouz 774</h2>
+  <a href="/ajouter-mouvement774" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 1574" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Aoulouz 1574</h2>
+  <a href="/ajouter-mouvement1574" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  {% elif header == "Domaine Aoulouz 2463" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Aoulouz 2463</h2>
+  <a href="/ajouter-mouvement2463" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+
+  
+  {% elif header == "Domaine Zbirate 2453" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Zbirate 2453</h2>
+  <a href="/ajouter-mouvement2453" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+
+
+  {% elif header == "Domaine Mariem 3434" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Mariem 3434</h2>
+  <a href="/ajouter-mouvement3434" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+
+  
+  {% elif header == "Domaine Plambier 2200" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Plambier 2200</h2>
+  <a href="/ajouter-mouvement2200" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+  
+
+
+  {% elif header == "Domaine Zbirate 2805" %}
+  <h2 class="mt-2" style="color: rgb(34, 190, 211);">Domaine Zbirate 2805</h2>
+  <a href="/ajouter-mouvement2805" class="btn btn-primary mt-5" role="button" style="text-align: center;"><strong>Ajouter une situation</strong></a>
+
+
+
+ 
+  {% endif %}
+</div>
+{% endif %}
+   
+    
+<!--div class="text-center">
+  <hr style="color: blue; margin-left: 20%;margin-right: 20%;">  
+{% include "pagination.html" %} 
+</div-->  
+      <main role="main" class="container">
+        
+    <hr style="color: blue;">
+    {% if movs %}
+    
+    <table class="table table-bordered border-danger ">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+          <th>Zone</th>
+          <th>Verger</th>
+          <th>NBR_caisses_Entrée</th>
+          <th>Bon_caisserie</th>
+          <th>Véhicule_entré</th>
+          <th>NBR_caisses_Sortie</th>
+          <th>Bon_livraison</th>
+          <th>Véhicule_sorti</th>
+          <th>Varieté</th>
+          <th>Poids(KG)</th>
+          <th>Observation</th>
+
+         
+
+              
+          
+
+
+
+        </tr>
+      </thead>
+      <tbody class="Prt9a">
+        
+        {% for mov in movs %}
+        <tr>
+          {% language 'fr' %}
+          
+          <td>{{ mov.user }}</td>
+          <td>{{ mov.Date}}</td>
+          <td>{{ mov.Zone }}</td>
+          <td>{{ mov.Verger }}</td>
+          <td>{{mov.NBR_caisses_Entrée}}</td>
+          <td>{{mov.Bon_caisserie}}</td>
+          <td>{{mov.Véhicule_entré}}</td>
+          <td>{{mov.NBR_caisses_Sortie}}</td>
+          <td>{{mov.Bon_livraison}}</td>
+          <td>{{mov.Véhicule_sorti}}</td>
+          <td>{{mov.Varieté}}</td>
+          <td>{{mov.Poids}}</td>
+          <td>{{mov.Observation}}</td>
+        
+          {% endlanguage %}
+          
+            {% if header == "Domaine Ouled Drisse 4660" %}
+            {% if mov.user == user %}
+          <td><a href="{% url 'modifier--situation4660' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+         
+          <td><a href="{% url 'supprimer--situation4660' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+          {% elif header == "Domaine Ouled Berhil 436" %}
+          {% if mov.user == user %}
+          <td><a href="{% url 'modifier--situation436' mov.pk %}"  ><img src="{% static 'img/edite.png' %}"></a></td>
+          
+
+          <td><a href="{% url 'supprimer--situation436' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+              {% elif header == "Domaine Aoulouz 1286" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier--situation1286' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer--situation1286' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+              {% elif header == "Domaine Aoulouz 774" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier--situation774' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+         
+          <td><a href="{% url 'supprimer--situation774' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+              {% elif header == "Domaine Aoulouz 1574" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier--situation1574' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer--situation1574' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+          {% elif header == "Domaine Aoulouz 2463" %}
+          {% if mov.user == user %}
+          <td><a href="{% url 'modifier--situation2463' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer--situation2463' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+              {% elif header == "Domaine Zbirate 2453" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier-situation2453' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-situation2453' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+              {% elif header == "Domaine Mariem 3434" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier-situation3434' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-situation3434' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+
+              {% elif header == "Domaine Plambier 2200" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier-situation2200' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-situation2200' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+    
+              {% elif header == "Domaine Zbirate 2805" %}
+              {% if mov.user == user %}
+          <td><a href="{% url 'modifier-situation2805' mov.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-situation2805' mov.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+          {% endif %}
+              {% endif %}
+             
+
+        {% endfor %}
+      
+      </tbody>
+
+    </table>
+    
+  </main>
+  
+</div>
+</div>
+
+  
+{% else %}
+<div class="center text-center">
+<table class="table table-bordered border-danger ">
+  <thead>
+    <tr>
+     
+      <th>Date</th>
+      <th>Zone</th>
+      <th>Verger</th>
+      <th>NBR_caisses_Entrée</th>
+      <th>Bon_caisserie</th>
+      <th>Véhicule_entré</th>
+      <th>NBR_caisses_Sortie</th>
+      <th>Bon_livraison</th>
+      <th>Véhicule_sorti</th>
+      <th>Varieté</th>
+      <th>Poids(KG)</th>
+      <th>Observation</th>
+    </tr>
+  </thead>
+</table>
+
+</main>
+
+</div>
+<div class="text-center mt-5" style="padding-left: 350px;">
+<div class="card" style="background: rgb(118, 184, 178); width: 650px; padding-left: 50px; " >
+    <h2 class="" style="color: rgb(0, 0, 0);">{{header}}</h2>
+
+
+</div>
+</div>
+</div>
+    {% endif %}
+
+    <canvas></canvas>
+
+    <script src="main.js" defer></script>    
+
+{% endblock %}

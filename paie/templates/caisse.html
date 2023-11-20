@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+<div class="container">
+  <hr class="" style="height: 128px;color: green;" >
+  <div class="title">{{title}}</div> 
+  <hr class="mt-2" style="height: 10px;color: rgb(25, 0, 255);">
+ 
+    <a href="{% url 'caisse1' %}" class="btn btn-success btn-md " role="button">Gestion du caisse Ouled berhil + Ouled drisse + Aoulouz</a><br>
+ 
+    <a href="{% url 'caisse4' %}" class="btn btn-success btn-md mt-2" role="button">Gestion du caisse Hawara</a>
+   
+  
+     
+    <h4 class=" text-center mt-2" style="color:rgb(255, 0, 0)">Domaine : {{ header }}</h4>      
+<div class="button-group col text-center ">          
+          
+          {% if header == "OD_berhil --OD_drisse --Aoulouz" %}
+          <a href="{% url 'export_caisse1' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>         
+          
+          {% elif header == "Hawara" %}          
+          <a href="{% url 'export_caisse4' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>         
+                        
+          {% endif %}
+          
+          
+</div>
+
+
+<table class="table table-bordered border-danger ">
+          <thead>
+                    <tr>
+                              
+                              <th style="color: darkblue;">Libelle</th>
+                              <th style="color: darkblue;">Recette</th>
+                              <th style="color: darkblue;">Cumul_recette</th>
+                              <th style="color: darkblue;">Depense</th>
+                              <th style="color: darkblue;">Cumul_depense</th>
+                              <th style="color: darkblue;">Solde</th>
+                    </tr>
+          </thead>
+          <tbody>
+                    {% for item in items %}
+                    <tr>
+                              
+                              <td style="font-size: 120%;color: rgb(212, 19, 19);">{{ item.libelle }}</td>
+                              <td style="font-size: 120%;color: rgb(5, 1, 247);">{{ item.recette |floatformat:2}}</td>
+                              <td>{{ item.cumul_recette|floatformat:2}}</td>
+                              <td>{{ item.depense |floatformat:2}}</td>
+                              <td>{{ item.cumul_depense|floatformat:2 }}</td>
+                              <td>{{ item.solde|floatformat:2}}</td>
+                              
+                             
+                    </tr>
+                    {% endfor %}
+          
+          </tbody>  
+</table>
+
+
+<hr class="" style="height: 25px;color:rgb(238, 8, 8)">
+
+</div>
+
+
+
+{% endblock %}

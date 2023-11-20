@@ -1,0 +1,34 @@
+
+{% if items.has_other_pages %}
+<div class="col-6 offset-3 text-center pagination-set mt-5">
+          <nav aria-label="">
+                    <ul class="pagination">
+                              {% if items.has_previous %}
+                              <li class="page-item"></li><a class="page-link me-2 avatar112" style="font-size:larger ;background: rgb(255, 255, 254);" aria-label="Previous" href="?page={{ items.paginator.start_index }}">Première </a>
+                              <li class="page-item"><a class="page-link me-2" style="font-weight: bold;background:rgb(48, 230, 236) "
+                              href="?page={{ items.previous_page_number}}"><<</a>
+                              
+                              </li>
+                              {% else %}
+                              <li class="page-item disabled"><a class="page-link me-2" ><span><<</span></a></li>
+                              {% endif %}
+                              {% for i in page_range %}
+                                  {% if items.number == i %}
+                                      <li class="page-item active">
+                                                <a class="page-link me-2"style="font-size: 25px; background:blue " href="#">{{i}} <span class="sr-only">(Actuel)</span></a>
+                                      </li>
+                                  
+                                  {% else %}
+                                      <li class="page-item"><a class="page-link me-2" style="font-weight: bold;background:rgb(217, 240, 116) " href="?page={{i}}">{{i}}</a></li>
+                                  {% endif %}
+                              {% endfor %}
+                              {% if items.has_next %}
+                                  <li class="page-item"><a class="page-link me-2" style="font-weight: bold;background:rgb(48, 230, 236) " aria-label="Next" href="?page={{items.next_page_number}}">>></a></li>
+                                  <li class="page-item"></li><a class="page-link me-2 avatar112" style="font-size:larger ;background: rgba(252, 251, 252, 0.986);" aria-label="Next" href="?page={{ items.paginator.num_pages }}">Dernière </a>
+                              {% else %}
+                              <li class="page-item disabled"><a class="page-link me-2"><span>>></span></a></li>
+                              {% endif %}
+                    </ul>
+          </nav>
+</div>
+{% endif %}

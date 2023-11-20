@@ -1,0 +1,73 @@
+
+{% load static %}
+
+<nav class="navbar navbar-expand-md navbar-danger  bg-primary me-2">
+  
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav me-auto mb-2">
+        
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'home' %}"><img src="{% static 'img/home.png' %} "> ACCUEIL</a>
+        </li>
+        
+        {% if user.is_authenticated %}
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;"href="/admin/"><img class="me-2" src="{% static 'img/admino.png' %} ">ADMIN </a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'index' %}"><img src="{% static 'img/pentor.jpg' %}">  PRODUITS REÇUS
+              </a>
+        </li>
+        
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'caisse' %}"><img src="{% static 'img/caisso.jpg' %}">  CAISSE</a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'display111' %}"><img src="{% static 'img/engrai.jpeg' %}">
+             ENGRAIS</a>
+        </li>
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'display1111' %}"><img src="{% static 'img/danger.png' %}">
+             PESTICIDES</a>
+        </li>
+
+        <li class="nav-item me-2">
+          <a class="nav-link active me-2" style="color:yellow;font-size:large;" href="{% url 'my-articles' %}"><img src="{% static 'img/raporta.jpg' %} "> RAPPORTS</a>
+        </li>
+        <li class="nav-item me-5">
+          <a class="nav-link active me-5" style="color:yellow;font-size:large;" href="{% url 'cooperative_mabrouka' %}"><img src="{% static 'img/casi.jpg' %} "> MABROUKA</a>
+        </li>
+        
+        <span><h4 class="text-link me-5 mt-5"style="color:yellow;font-size:large;"><img class="me-2" src="{% static 'img/hi.png' %} ">{{user.username}}</h4></span>
+        <li class="nav-item me-5 mt-5 col mb-2">
+          <a href="/accounts/password/change/" class="btn btn-success prt9 " style="height: 55px;"><strong>Edit MP </strong></a>
+        </li>
+        <li class="nav-item me-5 mt-5 col mb-2">
+          <a href="{% url 'logout' %}" class=" btn btn-danger " style="height: 35px;"><strong>Déconnexion</strong></a> 
+        </li>
+         
+      </ul>
+      
+    
+      {% else %}
+      <div class="mt-5 col-md-12 col text-center">
+      <a href="{% url 'login-blog' %}" class="btn btn-danger " style="height: 35px;"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+      </svg>
+      
+      <strong>Connexion</strong></a>
+    </div>
+        
+        
+              {% endif %}
+      
+    </div>
+  </div>
+</nav>
+</div>

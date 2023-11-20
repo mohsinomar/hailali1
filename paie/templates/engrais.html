@@ -1,0 +1,193 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+{% load i18n %}
+
+<div class="container ">
+  <div class="title">{{title}}</div> 
+    <div class="row">       
+          <div id="carouselExampleControls " class="carousel slide bg-light " data-bs-ride="carousel" style="width: 300px;">
+          <div class="carousel-inner mt-2" style="max-width: 500px;" >
+      <div class="carousel-item active ">
+        <img src="{% static 'img/ammon.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/sulfat.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/nitrate.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/chau.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item  ">
+        <img src="{% static 'img/uree.jpg' %}" class="d-block w-15 " alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/urea.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/engrais.jpeg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/fertim.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/complet.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+  
+    </div>
+  </div>
+  
+
+<hr class="mt-2" style="width:2080px;height: 20px;">
+
+
+  
+
+  
+  <hr class="" style="height: 10px; color: rgb(49, 139, 13);">
+  
+
+
+
+
+  <div class="col text-center">
+  <div class="button-group">
+    <a href="{% url 'display111' %}" class="btn btn-success btn-md " role="button">Engrais_Ouled berhil+Ouled drisse</a> <br>      
+    <a href="{% url 'display333' %}" class="btn btn-success btn-md mt-2" role="button">Engrais_Aoulouz</a>
+    <a href="{% url 'display444' %}" class="btn btn-success btn-md mt-2" role="button">Engrais Hawara</a>
+
+    <br > 
+ 
+</div>
+
+ 
+<hr class="" style="height: 10px;color: rgb(25, 0, 255);">
+  </div>
+  
+  <div class="center text-center">
+    {% if header == "Engrais_berhils" %}
+    <h2 class="text-center mt-2" style="color: rgb(247, 7, 7);">Domaine : OD berhil + OD drisse </h2>
+    
+    <a href="{% url 'export_mobile11' %}" class="btn btn-info me-5 mt-5" role="button">Exporter</a>
+    <a href="{% url 'ajouter-produits_berhil' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter un produit</strong></a>
+    
+    {% elif header == "Engrais_Aoulouzs" %}
+    <h2 class="text-center mt-2" style="color: rgb(255, 7, 7);">Domaine : Aoulouz</h2>
+    <a href="{% url 'export_mobile33' %}" class="btn btn-info me-5 mt-5" role="button">Exporter</a>
+    <a href="{% url 'ajouter-produits_aoulouz' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter un produit</strong></a>
+
+    {% elif header == "Engrais Hawara" %}
+    <h2 class="text-center mt-2" style="color: rgb(255, 7, 7);">Domaines Hawara</h2>
+    <a href="{% url 'export_mobile44' %}" class="btn btn-info me-5 mt-5" role="button">Exporter</a>
+    <a href="{% url 'ajouter-produits_hwara' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter un produit</strong></a>
+   
+ 
+    {% endif %}
+  </div>
+
+  <main role="main" class="container mt-2">
+
+    <div class="bg-light p-1 rounded">
+      
+      <form method='POST' action=''>{% csrf_token %}
+        {{form|crispy}}
+        <input class="mt-2" type="submit" value='Chercher' />
+    </div>
+
+    </form>
+    <h3 class="col text-center" style="color: blue;">Fréquence de la mise à jour (une fois par semaine)</h3>
+    {% if elements %}
+    <table class="table1 table-bordered border-danger ">
+      <thead>
+        <tr>
+         
+          <th>mise à jour</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Unité de mesure</th>
+         
+
+
+        </tr>
+      </thead>
+      <tbody>
+        {% for element in elements %}
+        <tr>
+          {% language 'fr' %}
+          <td>{{ element.date|date:'d F, o'}}</td>
+          <td>{{ element.categorie }}</td>                 
+          <td>{{ element.stock }}</td>
+          <td>{{ element.mesure }}</td>
+          {% endlanguage %}
+          {% if header == "Engrais_berhils" %}
+          <td><a href="{% url 'edit-etat-stock-berhil' element.pk %}" ><img src="{% static 'img/modifa.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-produits_berhil' element.pk %}"><img src="{% static 'img/deleter.png' %}"></a></td>
+          {% elif header == "Engrais_Aoulouzs" %}
+          <td><a href="{% url 'edit-etat-stock-aoulouz' element.pk %}" ><img src="{% static 'img/modifa.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-produits_aoulouz' element.pk %}"><img src="{% static 'img/deleter.png' %}"></a></td>
+          {% elif header == "Engrais Hawara" %}
+          <td><a href="{% url 'edit-etat-stock-hwara' element.pk %}" ><img src="{% static 'img/modifa.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-produits_hwara' element.pk %}"><img src="{% static 'img/deleter.png' %}"></a></td>
+          {% endif %}
+        </tr>
+
+        {% endfor %}
+
+      </tbody>
+
+
+
+    </table>
+  </main>
+  <hr class="" style="height: 25px;color:rgb(238, 8, 8)">
+  {% else %}
+<table class="table1 table-bordered border-danger ">
+  <thead>
+    <tr>
+     
+      <th>mise à jour</th>
+      <th>Category</th>
+      <th>Stock</th>
+      <th>Unité de mesure</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for element in elements %}
+        <tr>
+          {% language 'fr' %}
+          <td>{{ element.date|date:'d F, o'}}</td>
+          <td>{{ element.categorie }}</td>                 
+          <td>{{ element.stock }}</td>
+          <td>{{ element.mesure }}</td>
+          {% endlanguage %}
+      
+
+    {% endfor %}
+    
+  </tbody>
+
+
+
+</table>
+
+</main>
+
+</div>
+</div>
+<p class="col text-center"  style="font-size:100px">&#128578;</p>
+
+
+    <h3 class="text-center" style="color: rgb(247, 6, 6);font-size: 150%;">Le tableau est vide.</h3><br>
+    <h1 class="text-center" style="color: rgb(5, 41, 247);font-size: 150%;">Veuillez consulter le suivi du stock</h1>
+    {% endif %}
+  <hr class="" style="height: 25px;color:rgb(238, 8, 8)">
+  <br>
+</div>
+{% endblock %}

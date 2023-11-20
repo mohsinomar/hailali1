@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+{% load mathfilters %}
+<hr class="" style="width:2080px;height: 128px;color: green;" >
+
+<div class="container">
+  
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      
+  <div class="title">{{title}}</div>
+  <hr class="mt-2" style="height: 10px;color: rgb(25, 0, 255);">  
+   <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" href="{% url 'index' %}" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+        Tous les vergers
+      </button>
+      
+      <ul class="dropdown-menu mt-2" aria-labelledby="dropdownMenuButton1" >
+        <a href="{% url 'display1' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Ouled berhil</a>
+        <a href="{% url 'display2' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Ouled drisse</a>
+        <a href="{% url 'display3' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Aoulouz</a>
+        <a href="{% url 'display4' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Mariem</a>
+        <a href="{% url 'display5' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Plombier</a>
+        <a href="{% url 'display6' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Lglidi</a>
+        <a href="{% url 'display7' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Benmbark</a>
+        <a href="{% url 'display8' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Raisin</a>
+        <a href="{% url 'display9' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Bananier1</a>
+        <a href="{% url 'displayban2' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Bananier2</a>
+        <a href="{% url 'displayzbi' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Zbirate</a>
+        <a href="{% url 'displaymar' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Maryem2</a>
+        <a href="{% url 'displaymurcott' %}" class="  avatar contenta btn btn-primary mt-2" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Murcott</a>
+      </ul>
+    </div> 
+    
+  
+          
+
+
+
+<h4 class=" text-center mt-2"  style="color:rgb(255, 0, 13)">Domaine : {{ header }}</a></h4>  
+       
+
+          
+
+          <br>
+
+          <div class="button-group col text-center">
+
+                    {% if header == "Ouled_berhils" %}
+                    <a href="{% url 'export_mobile111' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                    <a href="{% url 'ajouter-employé11' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                    <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                      <h2 class="" style="color: rgb(0, 0, 0);">Ouled_berhil</h2>
+                      <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                                      
+                    {% elif header == "Ouled_drisses" %}
+                    <a href="{% url 'export_mobile222' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                    <a href="{% url 'ajouter-employé22' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une entrée</strong></a>
+                    <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                      <h2 class="" style="color: rgb(0, 0, 0);">Ouled_drisse</h2>
+                      <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>                   
+                    {% elif header == "Aoulouzs" %}
+                    <a href="{% url 'export_mobile333' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                    <a href="{% url 'ajouter-employé33' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une entrée</strong></a>
+                    <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                      <h2 class="" style="color: rgb(0, 0, 0);">Aoulouz</h2>
+                      <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>                    
+                    {% elif header == "Mariems" %}
+                    <a href="{% url 'export_mobile444' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                    <a href="{% url 'ajouter-employé44' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une entrée</strong></a>
+                    <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                      <h2 class="" style="color: rgb(0, 0, 0);">Mariem</h2>
+                      <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>                     
+                    {% elif header == "Plombier" %}
+                    <a href="{% url 'export_mobile555' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                    <a href="{% url 'ajouter-employé55' %}" class="btn btn-warning mt-5" role="button"><strong>Ajouter une entrée</strong></a>
+                    <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                      <h2 class="" style="color: rgb(0, 0, 0);">Plombier</h2>
+                      <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+
+                    {% elif header == "Lglidi" %}
+                    
+                      <a href="{% url 'export_achatgli' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-employé66' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Lglidi</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    
+                    {% elif header == "Benmbark" %}
+                   
+                      <a href="{% url 'export_achatbenm' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-employé77' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Benmbark</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    {% elif header == "Zbirate" %}
+                    
+                      <a href="{% url 'export_achatzbi' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-entré_to_zbirate' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                   
+                    <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                      <h2 class="" style="color: rgb(0, 0, 0);">Zbirate</h2>
+                      <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    {% elif header == "Bananier1" %}
+                    
+                      <a href="{% url 'export_achatban1' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-employé99' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Bananier1</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    
+                    {% elif header == "Bananier2" %}
+                   
+                      <a href="{% url 'export_achatban2' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-entré_to_bananier2' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Bananier2</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    {% elif header == "Raisin" %}
+                    
+                      <a href="{% url 'export_achatrais' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-employé88' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Raisin</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    {% elif header == "Maryem2" %}
+                    
+                      <a href="{% url 'export_achatmer' %}" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-entré_to_meriem2' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Maryem2</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+
+                    {% elif header == "Murcott" %}
+                  
+                      <a href="" class="btn btn-info mt-5 me-5" role="button">Exporter</a>
+                      <a href="{% url 'ajouter-entré_to_murcott' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter une entrée</strong></a>
+                      <div class="card mt-1" style="background: rgb(234, 233, 253); width: 290px;" >
+                        <h2 class="" style="color: rgb(0, 0, 0);">Murcott</h2>
+                        <h2 class="Prt9">Prix total des produits reçus : <br>{{ ziz }} DH </h2> </div>
+                    {% endif %}
+
+          </div>
+       
+         
+         
+          <table class="table table-bordered border-danger mt-2">
+                    <thead>
+                              <tr>
+                                        <th><strong>Utilisateur</strong></th>
+                                        <th><strong>Date</strong></th>
+                                        <th><strong>Produit entré</strong></th>
+                                        <th><strong>Quantité</strong></th>
+                                        <th><strong>Unité </strong></th>
+                                        <th><strong>Prix_unité (DH)</strong></th>
+                                        <th><strong>Prix_total (DH) </strong></th>                    
+                                        <th><strong>Observation</strong></th>
+                                        
+
+
+
+                              </tr>
+                            
+                            <tbody>
+                                      {% for subject in subjects %}
+                             
+        
+                                      <tr>
+                                                <td><strong>{{ subject.user }}</strong></td>
+                                                <td><strong>{{ subject.Date }}</strong></td>
+                                                <td><strong>{{ subject.desg }}</strong></td>
+                                                <td><strong style="color: darkblue;">{{ subject.Qté|floatformat:2 }}</strong></td>
+                                                <td><strong style="color: darkblue;">{{ subject.unite  }} </strong>
+                                                <td><strong style="color: darkblue;">{{ subject.pu|floatformat:2}}</strong></td>
+                                                <td><strong style="color: darkblue;">{{ subject.Qté | mul:subject.pu }} </strong>         
+                                                  <td><strong style="color: darkblue;">{{ subject.Observation }} </strong>
+                                                </td>
+        
+                                                
+                                     
+                                                {% if header == "Ouled_berhils" %}
+                                                {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense436' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                             <td><a href="{% url 'supprimer--depense436' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              
+                                              {% endif %}
+                                            
+                                              {% elif header == "Ouled_drisses" %}
+                                              {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense4660' subject.pk %}"  ><img src="{% static 'img/edite.png' %}"></a></td>                       
+                                              <td><a href="{% url 'supprimer--depense4660' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                                  {% elif header == "Aoulouzs" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense1286' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depense1286' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                                  {% elif header == "Mariems" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier-depense3434' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                             
+                                              <td><a href="{% url 'supprimer-depense3434' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                                  {% elif header == "Lglidi" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense2463' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depense2463' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                              {% elif header == "Benmbark" %}
+                                              {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense1574' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depense1574' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                                  {% elif header == "Plombier" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier-depense2200' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer-depense2200' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                              {% elif header == "Zbirate" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depensezbirate' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depensezbirate' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                                  {% elif header == "Bananier1" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier-depense2805' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer-depense2805' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                    
+                                                  {% elif header == "Bananier2" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense774' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depense774' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                        
+                                                  {% elif header == "Raisin" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depenseRais' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depenseRais' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                              
+                                              {% elif header == "Maryem2" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier-depense2453' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer-depense2453' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              {% endif %}
+                                        
+                                                  {% elif header == "Murcott" %}
+                                                  {% if subject.user == user %}
+                                              <td><a href="{% url 'modifier--depense_murcott' subject.pk %}" ><img src="{% static 'img/edite.png' %}"></a></td>
+                                              <td><a href="{% url 'supprimer--depense_murcott' subject.pk %}"><img src="{% static 'img/deletoe.png' %}"></a></td>
+                                              
+                                    {% endif %}
+                                        {% endif %}
+                                       
+                          
+                                      {% endfor %}
+                                   
+                            </tbody>
+                            </thead>
+                  </table>
+        
+                  <hr class="" style="height: 25px;color:rgb(238, 8, 8)">
+        </div>
+        </div>
+      </div>
+        
+        
+        {% endblock %}

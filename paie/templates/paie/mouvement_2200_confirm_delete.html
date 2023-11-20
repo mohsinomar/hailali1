@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container">
+  <div class="card" style="padding-top: 150px;padding-bottom : 150px; background :blanchedalmond">
+<form class="Prt9" method="POST">
+          {%  csrf_token %}
+         <div class="text-center">
+          <p><strong> Voulez-vous vraiment supprimer cet article? "{{ object }}"</strong></p>
+          <input type="submit" value="Supprimer" class="btn btn-danger me-5">
+          <a href="/mouvement-des-caisses-cuillette_2200"><input value="Annuler" class="btn btn-success me-5"></a>
+        </div>
+      </form>
+    </div>
+  </div>
+{% endblock %}

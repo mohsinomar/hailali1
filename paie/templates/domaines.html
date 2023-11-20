@@ -1,0 +1,133 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+{% load i18n %}
+
+
+
+<div class="container-fluid">
+  <div class="title">{{title}}</div>
+    <div class="row">
+     
+      <nav class="navbar navbar-expand-md navbar   bg-primary me-2 mt-2" style="height: 80px;" >
+  
+        <div class="container-fluid">
+          <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 ">
+              <li class="nav-item me-2 mt-2">
+              <a class="nav-link active mt-5" style="color:yellow;font-size:large;" href="{% url 'home' %}"><img src="{% static 'img/home.png' %} "><br> </a>
+            </li>
+             
+              
+              
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_436' %}" class="  avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Domaine 436</a>
+              </li>
+              <li class="nav-item me-2 mt-2">      
+                
+                  <a href="{% url 'mouvement-des-caisses-cuillette_4660' %}" class="  avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255); font-size: large;"   role="button">Domaine 4660</a>
+                </li>
+                <li class="nav-item me-2 mt-2"> 
+              <a href="{% url 'mouvement-des-caisses-cuillette_3434' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 3434</a>
+                   
+              </li>
+              
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2453' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2453</a>
+                   
+              </li>
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2200' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2200</a>
+              </li>
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2805' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2805</a>
+              </li>
+              
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_1286' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 1286</a>
+  
+    
+      
+      
+              </li>
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_774' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 774</a>
+              </li>
+              
+     
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_2463' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 2463</a>
+              </li>
+              <li class="nav-item me-2 mt-2">
+                <a href="{% url 'mouvement-des-caisses-cuillette_1574' %}" class="avatar contenta btn btn-primary mt-5" style="width:150px; color:rgb(255, 255, 255);font-size :large; " role="button">Domaine 1574</a>
+              </li>
+              <li class="nav-item me-2 mt-2">
+                
+                <i class="fa fa-print mt-5" style="font-size:48px;color:rgb(255, 230, 0) ;cursor: pointer;"  onclick="window.print()" ><br><p style="font-size: 22px;">Imprimer</p> </br></i>
+            </li>
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+      </div>
+    <div class="" style="padding-left:180px;">
+      <div class="titla mt-1 " style="padding-left:180px ;text-decoration: underline rgb(0, 0, 0);"  >{{titla}}</div>
+      <div class="card  " style="background: rgb(244, 246, 247); width: 1065px;" >
+        <div class="titre  " style="padding-left:0px ;"  >{{stocko}}</div></a>
+        
+        
+       {% for bil in bilan %}
+       <hr>
+      <h2 class=" Prt8 " style="height: 8px">{{ bil }}   </h2>
+       {% endfor %}
+  
+ 
+
+   
+ 
+ <div class="card mt-2" style="padding-left:20px ;height: 15px; width: 1065px; background-color: rgb(121, 115, 115); ">
+
+ </div>
+  
+    
+   
+   
+        <div class="card " style="background: rgb(244, 246, 247);  height: 190px; width:1065px;" >
+        <div class="titre " style="padding-left:0px ;"  >{{titlo}}</div>
+        <hr>
+        
+        <h2 class="Prt8" style="height: 8px">NBR de caisses reçues de Mabrouka  : {{ entrant.NBR_caisses_Entrée__sum }} </h2>
+        <hr>
+      <h2 class="Prt8" style="height: 8px">NBR de caisses envoyées vers Mabrouka :  {{sortant.NBR_caisses_Sortie__sum}}</h2>
+      <hr> 
+      <h2 class=" Prt8 " style="height: 8px">{{restant}}</h2>
+      </div>
+      <div class="card mt-0" style="padding-left:20px ;height: 15px; width: 1065px; background-color: rgb(121, 115, 115); "></div>
+      <div class="card mt-0">
+      <div class="titre  " style="padding-left:0px ;"  >{{titre}}</div></a>
+      
+      {% for group in resultat %}
+      <hr>
+       <h2 class=" Prt8 " style="height: 4px">{{ group }}   KG</h2>
+      {% endfor %}
+     <hr>
+      <h2 class="Prt9o ">Tonnage total   :  {{ pesant.Poids__sum }}  KG</h2>
+      
+    
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+
+  
+
+
+{% endblock %}

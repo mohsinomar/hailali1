@@ -1,0 +1,178 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block body %}
+{% load i18n %}
+
+
+
+<div class="container">
+  <div class="title">{{title}}</div>
+    <div class="row">
+        <div id="carouselExampleControls " class="carousel slide bg-light" data-bs-ride="carousel" style="width: 300px;">
+        <div class="carousel-inner mt-2" style="max-width: 500px;">
+
+      <div class="carousel-item active">
+        <img src="{% static 'img/nytos.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+
+      <div class="carousel-item ">
+        <img src="{% static 'img/epi.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/pestecide.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/phytos11.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item  ">
+        <img src="{% static 'img/tecida.jpg' %}" class="d-block w-15 " alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/confidor.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/valmec.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/movinto.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/karato.jpg' %}  " class="d-block w-15" alt="" style="height: 200px;">
+      </div>
+
+    </div>
+  </div>
+    <hr class="" style="height: 10px;color: darkorange;">
+
+    
+  
+  
+  
+  
+</div>
+
+
+<div class="col text-center">
+  <div class="button-group">
+    <a href="{% url 'display1111' %}" class="btn btn-success btn-md " role="button">Pesticide Ouled berhil + Ouled drisse</a><br>
+    <a href="{% url 'display3333' %}" class="btn btn-success btn-md mt-2" role="button">Pesticide Aoulouz</a>
+    <a href="{% url 'display4444' %}" class="btn btn-success btn-md mt-2" role="button">Pesticide Hawara</a>
+    
+  </div>
+  
+</div>
+
+<div class="center text-center">
+  <hr class="mt-2" style="color: rgb(25, 0, 255);">
+  {% if header == "Pesticide_berhils" %}
+  <h2 class="" style="color: rgb(247, 7, 7);">Domaine : OD berhil + OD drisse</h2>
+  <a href="{% url 'export_mobile1111' %}" class="btn btn-info me-5 mt-5" role="button">Exporter</a>
+  <a href="{% url 'ajouter-pesticide_berhil' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter un produit</strong></a>
+  {% elif header == "Pesticide_Aoulouzs" %}
+  <h2 class="mt-2" style="color: rgb(255, 7, 7);">Domaine : Aoulouz</h2>
+  <a href="{% url 'export_mobile3333' %}" class="btn btn-info me-5 mt-5" role="button">Exporter</a>
+  <a href="{% url 'ajouter-pesticide_aoulouz' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter un produit</strong></a>
+  {% elif header == "Pesticide Hawara" %}
+  <h2 class="mt-2" style="color: rgb(255, 7, 7);">Domaines : Hawara</h2>
+  <a href="{% url 'export_mobile4444' %}" class="btn btn-info me-5 mt-5" role="button">Exporter</a>
+  <a href="{% url 'ajouter-pesticide_hwara' %}" class="btn btn-warning mt-5" role="button" style="text-align: center;"><strong>Ajouter un produit</strong></a>
+  {% endif %}
+</div>
+  <main role="main" class="container">
+
+    <div class="bg-light p-1 rounded">
+      
+      <form method='POST' action=''>{% csrf_token %}
+        {{form|crispy}}
+        <input class="mt-2" type="submit" value='Chercher' />
+    </div>
+
+    </form>
+    <h3 class="col text-center" style="color: blue;">Fréquence de la mise à jour (une fois par semaine)</h3>
+    <hr style="color: blue;">
+    {% if orderes %}
+    <table class="table table-bordered border-danger ">
+      <thead>
+        <tr>
+         
+          <th>mise à jour</th>
+          <th>Category</th>
+          <th>Groupe</th>
+          <th>Stock</th>
+          <th>Unité de mesure</th>
+
+
+
+        </tr>
+      </thead>
+      <tbody>
+        
+        {% for ordere in orderes %}
+        <tr>
+          {% language 'fr' %}
+         
+          <td>{{ ordere.date|date:"d-m-Y"}}</td>
+          <td>{{ ordere.category}}</td>  
+          <td>{{ ordere.groupe}}</td>                  
+          <td>{{ ordere.stock|floatformat:1 }}</td>
+          <td>{{ ordere.mesure }}</td>
+
+          {% endlanguage %}
+
+          {% if header == "Pesticide_berhils" %}
+          <td><a href="{% url 'edit-etat-pesticide-berhil' ordere.pk %}" ><img src="{% static 'img/modifa.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-pesticide_berhil' ordere.pk %}"><img src="{% static 'img/deleter.png' %}"></a></td>
+          {% elif header == "Pesticide_Aoulouzs" %}
+          <td><a href="{% url 'edit-etat-pesticide-aoulouz' ordere.pk %}" ><img src="{% static 'img/modifa.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-pesticide_aoulouz' ordere.pk %}"><img src="{% static 'img/deleter.png' %}"></a></td>
+          {% elif header == "Pesticide Hawara" %}
+          <td><a href="{% url 'edit-etat-pesticide-hwara' ordere.pk %}" ><img src="{% static 'img/modifa.png' %}"></a></td>
+          <td><a href="{% url 'supprimer-pesticide_hwara' ordere.pk %}"><img src="{% static 'img/deleter.png' %}"></a></td>
+          {% endif %}
+          </tr>
+        {% endfor %}
+        
+      </tbody>
+
+
+
+    </table>
+    
+  </main>
+  
+</div>
+</div>
+{% else %}
+<table class="table table-bordered border-danger ">
+  <thead>
+    <tr>
+     
+          <th>mise à jour</th>
+          <th>Category</th>
+          <th>Groupe</th>
+          <th>Stock</th>
+          <th>Unité de mesure</th>
+
+
+
+    </tr>
+  </thead>
+  
+
+
+
+</table>
+
+</main>
+
+</div>
+</div>
+<p class="col text-center"  style="font-size:100px">&#128578;</p>
+
+
+    <h3 class="text-center" style="color: rgb(247, 6, 6);font-size: 150%;">Le tableau est vide.</h3><br>
+    <h1 class="text-center" style="color: rgb(5, 41, 247);font-size: 150%;">Veuillez consulter le suivi du stock</h1>
+    {% endif %}
+  <hr class="" style="height: 25px;color:rgb(238, 8, 8)">
+{% endblock %}

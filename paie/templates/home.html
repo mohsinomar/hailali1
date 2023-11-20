@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<div class="container ">
+
+  <hr class="" style="height: 90px;color:rgb(3, 255, 45)">
+  <div class="title">{{title}}
+    <style>
+      .title {
+        font-family: helvetica;
+        color: rgb(10, 6, 231);
+        font-size: 50px;
+        text-align: center;
+        width: 100%;
+        text-shadow: 6px 6px 6px #74a9e6;
+        display: block;
+        font-weight: bolder;
+      }
+    </style>
+  </div>
+  <hr>
+
+  <div class="content mt-5">
+
+    <h2 class="text-center mt-2">Bienvenue</h2>
+    <h2 class="text-center mt-2">Bienvenue</h2>
+
+
+    <br>
+    <hr class="mt-2" style="color: ghostwhite;">
+  </div>
+  <div class="col text-center">
+    
+     
+    <br>
+    
+    <br>
+   
+  </div>
+  <div class="containero">
+    <div id="carousel">
+     
+        <figure><img src="{% static 'img/koto1.jpg' %}"></figure>
+        <figure><img src="{% static 'img/ban1.jpg' %}"></figure>
+        <figure><img src="{% static 'img/climentine.jpg' %}"></figure>
+        <figure><img src="{% static 'img/pastic1.jpg' %}"></figure>
+        <figure><img src="{% static 'img/assir.jpg' %}"></figure>
+        <figure><img src="{% static 'img/climo2.jpg' %}"></figure>
+        <figure><img src="{% static 'img/juso2.jpg' %}"></figure>
+        
+        <figure><img src="{% static 'img/raiso1.jpg' %}"></figure>
+        <figure><img src="{% static 'img/dnhp.jpg' %}"></figure>
+        
+       
+        
+    </div>
+</div>
+</div>
+<!---->
+  <div class="row">
+    <h1 class="text-center mt-2" style="font-size: 300%;color:rgba(4, 172, 32, 0.911);font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; "><strong> DOMAINE HAILALI</strong>
+      </h4>
+
+  </div>
+  <!--div id="carouselExampleControls " class="carousel slide " data-bs-ride="carousel">
+    <div class="carousel-inner mt-2">
+      <div class="carousel-item active">
+        <img src="{% static 'img/koto.jpg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/citronier.jpg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/assir.jpg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item  ">
+        <img src="{% static 'img/climo.jpg' %}" class="d-block w-100 " alt="" style="height: 420px;">
+      </div>
+      <div class="carousel-item ">
+        <img src="{% static 'img/juso.jpg' %}  " class="d-block w-100" alt="" style="height: 420px;">
+
+      </div>
+
+    </div-->
+
+  </div>
+
+
+  {% include '_footer.html'%}
+</div>
+
+{% endblock %}
